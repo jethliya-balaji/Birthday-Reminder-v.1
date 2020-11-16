@@ -11,8 +11,10 @@ class BirthdayReminder:
         self.Friend_birth = {}
         self.check_data()
 
-    def add_birth_dates(self, name, date):
-        self.Friend_birth.update({name: date})
+    def add_birth_dates(self):
+        name_friend = input("Enter The Name Of A Person:)- ").capitalize().strip()
+        birth_date = input("Enter the Birth Date Of The Person(date month):)- ").capitalize().strip()
+        self.Friend_birth.update({name_friend:birth_date})
         self.check_data()
 
     def remove(self, name):
@@ -30,12 +32,7 @@ class BirthdayReminder:
             print("NOT ADDED ANY BIRTHDAYS")
         else:
             for friend, birthdate in self.Friend_birth.items():
-                print(f"{friend}'s birthday is on {birthdate}")
-
-    def get_input(self):
-        name_friend = input("Enter The Name Of A Person:)- ").capitalize().strip()
-        birth_date = input("Enter the Birth Date Of The Person(date month):)- ").capitalize().strip()
-        self.add_birth_dates(name_friend, birth_date)
+                print(f"{friend}'s birthday is on {birthdate}")   
 
     def check_data(self):
         if path.isfile('data.pkl'):
@@ -65,7 +62,7 @@ if __name__ == '__main__':
         user_choice = input("\n")
 
         if user_choice == '1':
-            userId.get_input()
+            userId.add_birth_dates()
             time.sleep(2)
         elif user_choice == '2':
             userId.display_birth_dates()
